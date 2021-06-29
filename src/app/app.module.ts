@@ -15,6 +15,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HighscoreComponent } from './highscore/highscore.component';
+import { FaqComponent } from './faq/faq.component';
+import { PuzzleComponent } from './puzzle/puzzle.component';
+import { PuzzleoneComponent } from './puzzleone/puzzleone.component';
+import { PuzzletwoComponent } from './puzzletwo/puzzletwo.component';
+import { TimerComponent } from './timer/timer.component';
 
 
 
@@ -22,7 +29,14 @@ import { SignupComponent } from './signup/signup.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent,
+    HighscoreComponent,
+    FaqComponent,
+    PuzzleComponent,
+    PuzzleoneComponent,
+    PuzzletwoComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
