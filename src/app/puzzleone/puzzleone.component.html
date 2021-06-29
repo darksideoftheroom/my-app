@@ -1,2 +1,2 @@
-<app-timer></app-timer>
+<app-timer [solved]="this.solved" (secondPassed)="this.passedSecond($event)"></app-timer>
 <div id="puzzleContainer"></div>

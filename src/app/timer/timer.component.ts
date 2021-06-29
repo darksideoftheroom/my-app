@@ -9,7 +9,7 @@ export class TimerComponent implements OnInit {
 
   secs = 0;
   @Output() secondPassed = new EventEmitter<number>();
-  //@Input() solved = false;
+  @Input() solved = false;
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class TimerComponent implements OnInit {
   // Zählt die Sekunden und erkennt, dass Spiel fertig ist
   timer(): void{
 	// Wenn noch nicht alle Paare gefunden wurden
-	  if(true){
+	  if(!this.solved){
 		  // Zählen der aktuellen Sekunde
 		  this.secs++;
 
@@ -35,8 +35,7 @@ export class TimerComponent implements OnInit {
 	}
 	// Es wurden alle Paare gefunden
 	else{
-		// todo irgendetwas machen damit sich der User freut
-		// Zeit läuft nicht mehr weiter
+		alert("done");
 	}
 }
 
