@@ -1,4 +1,10 @@
-<h1> {{title}}</h1>
-<a mat-raised-button color="primary" type="button" routerLink="/login">Login</a>
-<a mat-raised-button color="primary" type="button" routerLink="/signup">SignUp</a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand">FH Memory</a>
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
+        </ul>
+    </div>
+</nav>
 <router-outlet></router-outlet>
