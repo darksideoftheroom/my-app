@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { LogindataService } from '../logindata.service';
+import { RepositoryService } from '../repository.service';
 
 
 @Component({
@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
    }
 
   hide = true;
-  loginService: LogindataService;
+  repositoryService: RepositoryService;
 
-  constructor(loginService: LogindataService) {
-    this.loginService = loginService;
+  constructor(repositoryService: RepositoryService) {
+    this.repositoryService = repositoryService;
   }
 
   ngOnInit(): void {
@@ -39,16 +39,19 @@ export class LoginComponent implements OnInit {
     if(password === ''){
       alert("Password can not be empty");
     }
-    if(username === ''){
+    else if(username === ''){
       alert("Username can not be empty");
-    }
-    if (username === "test@test.at" &&
-    password === "12345678") {
-      alert("Welcome!");
-      console.log("Login successful");
-    } else {
-      alert("Login failed");
-      console.log("Login failed");
+    }else{
+      this.repositoryService.login(username, password).subscribe((responseData) => {
+        console.log(responseData);
+        if(responseData.message === "user exists"){
+          alert("User exits");
+        }
+        else if(responseData.message === "Successful login"){
+          alert("Erfolg!");
+          //this.router.navigate(['/login']);
+        }
+      });
     }
   }
 

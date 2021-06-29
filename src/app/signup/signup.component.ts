@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { SignupdataService } from '../signupdata.service';
+import { Router } from '@angular/router';
+import { RepositoryService } from '../repository.service';
 
 
 @Component({
@@ -30,10 +31,12 @@ export class SignupComponent implements OnInit {
 
 
   hide = true;
-  signupService: SignupdataService;
+  repositoryService: RepositoryService;
+  router:Router;
 
-  constructor(signupService: SignupdataService) {
-    this.signupService = signupService;
+  constructor(repositoryService: RepositoryService, router: Router) {
+    this.repositoryService = repositoryService;
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -49,9 +52,16 @@ export class SignupComponent implements OnInit {
     }
     if(password.length >= 8 && username != ''){
       if (password === password2) {
-        alert("Erfolg!");
+        this.repositoryService.signup(username, password).subscribe((responseData) => {
+          console.log(responseData);
+          if(responseData.message === "user exists"){
+            alert("User exits");
+          }else{
+            alert("Erfolg!");
+            this.router.navigate(['/login']);
+          }
+        });
         console.log(username, company, street, pcode);
-        console.log("Signup successful");
     }
     }
     if(password.length < 8){
