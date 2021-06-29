@@ -1,0 +1,39 @@
+<p>signup works!</p>
+<mat-card>
+  <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput type="email" placeholder="E-Mail" [(formControl)]="email" required #username/>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>choose password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" [(formControl)]="lethiseight" [(formControl)]="itsrequired" minlength="8" required #password>
+          <mat-error *ngIf="itsrequired.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-error *ngIf="lethiseight.invalid"></mat-error>
+          <button mat-icon-button type="button" matSuffix (click)="hide = !hide!">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>password repeat</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" [(formControl)]="itsrequiredTwo" [(formControl)]="lethiseightTwo" minlength="8"  required #password2>
+          <mat-error *ngIf="itsrequiredTwo.invalid">{{getErrorMessage()}}</mat-error>
+          <button mat-icon-button type="button" matSuffix (click)="hide = !hide!">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <input matInput type="text" value="FH Technikum Wien" disabled #company/>
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>street</mat-label>
+        <textarea matInput #street></textarea> 
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>post code</mat-label>
+        <input matInput type="number" placeholder="1130" #pcode/>
+      </mat-form-field><br>
+      <button (click)="signup(username.value, password.value, password2.value, company.value, street.value, pcode.value)" mat-raised-button color="primary" type="submit">Register</button>
+    </form>
+</mat-card>
