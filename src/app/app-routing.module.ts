@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 import { PuzzleoneComponent } from './puzzleone/puzzleone.component';
 import { PuzzletwoComponent } from './puzzletwo/puzzletwo.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'puzzleone', component: PuzzleoneComponent },
   { path: 'puzzletwo', component: PuzzletwoComponent },
   { path: 'highscore', component: HighscoreComponent },
+  { path: 'logout', component: LogoutComponent },
 
 ];
 

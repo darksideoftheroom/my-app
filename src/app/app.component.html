@@ -2,10 +2,11 @@
     <div class="container">
         <a class="navbar-brand">FH Memory</a>
         <ul class="nav navbar-nav" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
+            <li id="login" class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+            <li id="signup" class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/puzzle">Puzzle</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/profile">Profile</a></li>
+            <li id="profile" class="nav-item unvisible"><a class="nav-link" routerLink="/profile">Profile</a></li>
+            <li id="logout" class="nav-item unvisible"><a class="nav-link" routerLink="/logout">Logout</a></li>
         </ul>
     </div>
 </nav>

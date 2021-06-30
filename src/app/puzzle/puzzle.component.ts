@@ -10,6 +10,7 @@ export class PuzzleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
