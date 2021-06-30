@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { PuzzleoneComponent } from './puzzleone/puzzleone.component';
 import { PuzzletwoComponent } from './puzzletwo/puzzletwo.component';
 import { TimerComponent } from './timer/timer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -37,7 +39,8 @@ import { TimerComponent } from './timer/timer.component';
     PuzzleComponent,
     PuzzleoneComponent,
     PuzzletwoComponent,
-    TimerComponent
+    TimerComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { TimerComponent } from './timer/timer.component';
     MatToolbarModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

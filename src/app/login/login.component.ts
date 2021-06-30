@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RepositoryService } from '../repository.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   repositoryService: RepositoryService;
   router:Router;
 
-  constructor(repositoryService: RepositoryService, router: Router) {
+  constructor(repositoryService: RepositoryService, router: Router, private cookieService: CookieService ) {
     this.repositoryService = repositoryService;
     this.router = router;
   }
@@ -52,7 +53,9 @@ export class LoginComponent implements OnInit {
         }
         else if(responseData.message === "Successful login"){
           alert("Erfolg!");
-          this.router.navigate(['/puzzle']);
+          this.cookieService.set('user', username);
+          window.location.href = "http://localhost:4200/puzzle";
+          //this.router.navigate(['/puzzle']);
         }
       });
     }
