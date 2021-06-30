@@ -127,7 +127,13 @@ db.find({}, function(err,docs){
 });
 function randomToken(){
     let token;
-    token = "adj29uej"
+    token = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 8; i++ ) {
+        token += characters.charAt(Math.floor(Math.random() * charactersLength));
+     }
+
     return token;
    }
 });

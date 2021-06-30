@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { RepositoryService } from '../repository.service';
 
 
@@ -26,9 +27,11 @@ export class LoginComponent implements OnInit {
 
   hide = true;
   repositoryService: RepositoryService;
+  router:Router;
 
-  constructor(repositoryService: RepositoryService) {
+  constructor(repositoryService: RepositoryService, router: Router) {
     this.repositoryService = repositoryService;
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -44,12 +47,12 @@ export class LoginComponent implements OnInit {
     }else{
       this.repositoryService.login(username, password).subscribe((responseData) => {
         console.log(responseData);
-        if(responseData.message === "user exists"){
-          alert("User exits");
+        if(responseData.message === "Login failed"){
+          alert("Login failed");
         }
         else if(responseData.message === "Successful login"){
           alert("Erfolg!");
-          //this.router.navigate(['/login']);
+          this.router.navigate(['/puzzle']);
         }
       });
     }

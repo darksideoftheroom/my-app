@@ -1,0 +1,10 @@
+.choose-puzzle{
+display: grid;
+place-items: center;
+margin-top: 20px;
+}
+
+.puzzleone-img{
+    height: 250px;
+    width: 320px;
+}
