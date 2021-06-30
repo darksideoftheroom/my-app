@@ -25,6 +25,7 @@ import { PuzzleoneComponent } from './puzzleone/puzzleone.component';
 import { PuzzletwoComponent } from './puzzletwo/puzzletwo.component';
 import { TimerComponent } from './timer/timer.component';
 import { LogoutComponent } from './logout/logout.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -55,7 +56,8 @@ import { LogoutComponent } from './logout/logout.component';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatExpansionModule
   ],
   providers: [ CookieService ],
   bootstrap: [AppComponent]
