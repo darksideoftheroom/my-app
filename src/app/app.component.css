@@ -1,3 +1,7 @@
 .unvisible{
     display: none;
 }
+
+img{
+    height: 70px;
+}
