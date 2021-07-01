@@ -1,3 +1,4 @@
+import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -28,15 +29,22 @@ export class TimerComponent implements OnInit {
       //Schicke den Emitter aus, um zu zeigen, dass eine Sekunde vergangen ist
       this.secondPassed.emit(this.secs);
 		  // Aktualisieren der Sekunden auf der Seite
-      // TODO: innerHTML nicht verwenden!
-		  document.getElementById('zeitlabel').innerHTML = this.secs + '';
+  
+		  document.getElementById('zeitlabel').innerText = this.secs + '';
 		  // Zeit soll wieder eine Sekunde weiterlaufen
       setTimeout(() => this.timer(), 1000);
 	}
 	// Es wurden alle Paare gefunden
 	else{
-		alert("done");
+    this.calcScore();  
 	}
 }
-
+  calcScore():void{
+    let score = 100 - this.secs;
+    console.log(score);
+    if(score < 0){
+      score = 0;
+    }
+    alert("Your score: " + score + "/100");
+  }
 }
