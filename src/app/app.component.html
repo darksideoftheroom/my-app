@@ -2,7 +2,7 @@
     <div class="container">
         <a href ="/index.html" class="navbar-brand"><img src="../assets/logo/logo.png"></a>
         <ul class="nav navbar-nav" routerLinkActive="active">
-            <li id="login" class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+            <li *ngIf = "!this.isLoggedin" id="login" class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
             <li id="signup" class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/puzzle">Puzzle</a></li>
             <li id="profile" class="nav-item unvisible"><a class="nav-link" routerLink="/profile">Profile</a></li>

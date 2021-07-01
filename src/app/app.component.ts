@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(private cookieService: CookieService) { }
   
+  isLoggedin = false;
 
   ngOnInit(): void {
 
@@ -20,9 +21,12 @@ export class AppComponent implements OnInit {
     console.log(allCookies);
 
     if(allCookies != ''){
-      this.visible();
+/*       this.visible();
+ */      this.isLoggedin = true;
     }
   }
+
+
   visible(){
     document.getElementById("profile").classList.remove("unvisible");
     document.getElementById("logout").classList.remove("unvisible");

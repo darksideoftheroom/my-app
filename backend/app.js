@@ -56,22 +56,25 @@ var highscore = {
     points: highscoreData.points
 };
 highscoreData.points = req.body.points;
-db.insert(highscore, function(err, newScore){
+db.update({type: "highscoreList", username: highscoreData.username}, {type: "highscoreList", username: highscoreData.username, points: highscoreData.points}, {upsert: true}, function(err, newScore, ad,up){
+    
+    console.log(ad);
+    console.log(up);
     console.log(err);
+    console.log(newScore);
 });
 });
 
 app.get('/gethighscore', function(req, res) {
 let scorearray = { }
-db.find({type: 'highscoreList'}, function (err, docs) {
-    docs.forEach(doc => { 
-    scorearray = docs;
+db.find({type: 'highscoreList'}).sort({points: 1}).limit(10).exec(function (err, docs) {
+    console.log(docs);
+    console.log(err);
 
-    }); 
     res.status(200).json({
-        message: scorearray
-    });    
-    });
+    message: docs
+  });     
+ });
 
 });
 

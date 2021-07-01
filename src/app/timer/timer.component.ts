@@ -1,5 +1,8 @@
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { RepositoryService } from '../repository.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-timer',
@@ -12,10 +15,15 @@ export class TimerComponent implements OnInit {
   @Output() secondPassed = new EventEmitter<number>();
   @Input() solved = false;
 
-  constructor() { }
+  repositoryService: RepositoryService;
+
+  constructor(repositoryService: RepositoryService, private cookieService: CookieService ) {
+    this.repositoryService = repositoryService;
+  }
 
   ngOnInit(): void {
     this.timer();
+    this.repositoryService.sendHighscore("test", 20).subscribe();
   }
 
   // Funktion, die jede Sekunde aufgerufen wird
@@ -44,6 +52,11 @@ export class TimerComponent implements OnInit {
     console.log(score);
     if(score < 0){
       score = 0;
+    }
+    var username = this.cookieService.get('user');
+    if(username !== '')
+    {
+      this.repositoryService.sendHighscore(username, score).subscribe();
     }
     alert("Your score: " + score + "/100");
   }
