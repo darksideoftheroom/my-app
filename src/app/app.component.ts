@@ -27,10 +27,10 @@ export class AppComponent implements OnInit {
   }
 
 
-  visible(){
+/*   visible(){
     document.getElementById("profile").classList.remove("unvisible");
     document.getElementById("logout").classList.remove("unvisible");
     document.getElementById("login").classList.add("unvisible");
     document.getElementById("signup").classList.add("unvisible");
-  }
+  } */
 }

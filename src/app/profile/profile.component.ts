@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RepositoryService } from '../repository.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  repositoryService: RepositoryService;
+  username;
 
-  constructor() { }
+  constructor(repositoryService: RepositoryService, private cookieService: CookieService ) {
+    this.repositoryService = repositoryService;
+  }
 
   ngOnInit(): void {
+    this.username = this.cookieService.get('user');
   }
 
 }

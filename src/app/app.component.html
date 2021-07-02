@@ -3,10 +3,11 @@
         <a href ="/index.html" class="navbar-brand"><img src="../assets/logo/logo.png"></a>
         <ul class="nav navbar-nav" routerLinkActive="active">
             <li *ngIf = "!this.isLoggedin" id="login" class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
-            <li id="signup" class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
+            <li *ngIf = "!this.isLoggedin" id="signup" class="nav-item"><a class="nav-link" routerLink="/signup">SignUp</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/puzzle">Puzzle</a></li>
-            <li id="profile" class="nav-item unvisible"><a class="nav-link" routerLink="/profile">Profile</a></li>
-            <li id="logout" class="nav-item unvisible"><a class="nav-link" routerLink="/logout">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/highscore">Scoreboard</a></li>
+            <li *ngIf = "this.isLoggedin" id="profile" class="nav-item"><a class="nav-link" routerLink="/profile">Profile</a></li>
+            <li *ngIf = "this.isLoggedin" id="logout" class="nav-item"><a class="nav-link" routerLink="/logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/faq">FAQ</a></li>
         </ul>
     </div>
