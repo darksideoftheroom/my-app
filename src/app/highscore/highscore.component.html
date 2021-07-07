@@ -1,4 +1,8 @@
 <h1>Scoreboard</h1>
-<div class="scoreboard" *ngFor = "let data of this.highscoreData">
-    <li>{{data.username}}: {{data.points}}</li>
+<div class="wrapper">
+<div class="scoreboard">
+    <ol>
+    <li *ngFor = "let data of this.highscoreData">{{data.username}}: {{data.points}}</li>
+</ol>
+</div>
 </div>

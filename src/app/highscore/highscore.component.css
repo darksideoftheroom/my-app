@@ -1,4 +1,10 @@
 .scoreboard{
-    text-align: center;
+    display: block;
+    text-align: left;
     font-size: 20px;
+}
+
+.wrapper{
+    display: grid;
+    place-items: center;
 }

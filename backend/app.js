@@ -5,6 +5,7 @@ db = new Datastore();
 var express = require('express');
 var cors = require('cors');
 const { errorComparator } = require('tslint/lib/verify/lintError');
+const { consoleTestResultHandler } = require('tslint/lib/test');
 
 var app = express();
 app.use(cors());
@@ -15,7 +16,8 @@ app.post('/signup', function(req, res){
 const registerData = req.body;
 var person = {
     username: registerData.username,
-    password: registerData.password
+    password: registerData.password,
+    points: 0
 };
 person.username = req.body.username;
 person.password = req.body.password;
@@ -56,18 +58,26 @@ var highscore = {
     points: highscoreData.points
 };
 highscoreData.points = req.body.points;
-db.update({type: "highscoreList", username: highscoreData.username}, {type: "highscoreList", username: highscoreData.username, points: highscoreData.points}, {upsert: true}, function(err, newScore, ad,up){
-    
-    console.log(ad);
-    console.log(up);
-    console.log(err);
-    console.log(newScore);
-});
-});
+
+/*   db.find({type: 'highscorelist'}, function(err,docs){
+    if(docs.points < highscoreData.points){ */
+
+        db.update({type: "highscoreList", username: highscoreData.username}, {type: "highscoreList", username: highscoreData.username, points: highscoreData.points}, {upsert: true}, function(err, newScore, ad,up){
+        
+            console.log(ad);
+            console.log(up);
+            console.log(err);
+            console.log(newScore);
+        });
+///  }
+ }); 
+
+
+//}); 
 
 app.get('/gethighscore', function(req, res) {
 let scorearray = { }
-db.find({type: 'highscoreList'}).sort({points: 1}).limit(10).exec(function (err, docs) {
+db.find({type: 'highscoreList'}).sort({points: -1}).limit(10).exec(function (err, docs) {
     console.log(docs);
     console.log(err);
 

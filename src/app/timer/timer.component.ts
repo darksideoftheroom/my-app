@@ -23,7 +23,8 @@ export class TimerComponent implements OnInit {
 
   ngOnInit(): void {
     this.timer();
-    this.repositoryService.sendHighscore("test", 20).subscribe();
+/*     this.repositoryService.sendHighscore("test", 20).subscribe();
+    this.repositoryService.sendHighscore("test2", 40).subscribe(); */
   }
 
   // Funktion, die jede Sekunde aufgerufen wird
