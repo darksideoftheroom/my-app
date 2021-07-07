@@ -59,21 +59,17 @@ var highscore = {
 };
 highscoreData.points = req.body.points;
 
-/*   db.find({type: 'highscorelist'}, function(err,docs){
-    if(docs.points < highscoreData.points){ */
 
-        db.update({type: "highscoreList", username: highscoreData.username}, {type: "highscoreList", username: highscoreData.username, points: highscoreData.points}, {upsert: true}, function(err, newScore, ad,up){
+db.update({type: "highscoreList", username: highscoreData.username}, {type: "highscoreList", username: highscoreData.username, points: highscoreData.points}, {upsert: true}, function(err, newScore, ad,up){
         
-            console.log(ad);
-            console.log(up);
-            console.log(err);
-            console.log(newScore);
-        });
-///  }
- }); 
+    console.log(ad);
+    console.log(up);
+    console.log(err);
+    console.log(newScore);
+    });
+}); 
 
 
-//}); 
 
 app.get('/gethighscore', function(req, res) {
 let scorearray = { }
@@ -87,7 +83,7 @@ db.find({type: 'highscoreList'}).sort({points: -1}).limit(10).exec(function (err
  });
 
 });
-/* app.get('/getuserhighscore', function(req, res){
+/*  app.post('/getuserhighscore', function(req, res){
     const userData = req.body;
     console.log(userData.username);
 db.find({}, function(err,docs){
@@ -99,23 +95,8 @@ db.find({}, function(err,docs){
         }    
         });
     });
-}); */
+});  */
 
-app.post('/logout', function(req, res){
-docs.forEach(doc => {
-    if(loginData.username == doc.username){
-        var token = randomToken();
-        token ="";
-        console.log(token);
-        const tokenData = {
-            username: loginData.username,
-            token: token
-        };
-        db.insert(tokenData, function(err, newDoc) {
-        });
-    }    
-    });
-});
 
 app.post('/login', function(req, res){
 const loginData = req.body;

@@ -18,10 +18,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.cookieService.get('user');
-    /* this.repositoryService.loadUserHighscore(this.username).subscribe((responseData) => {
+/*      this.repositoryService.loadUserHighscore(this.username).subscribe((responseData) => {
       console.log(responseData);
       this.highscoreData = responseData.message;
-    }); */
+    });  */
   }
 
 }

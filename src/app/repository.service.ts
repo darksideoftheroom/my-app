@@ -49,7 +49,7 @@ export class RepositoryService {
     const scoreData = {
       username: username
     };
-    return this.http.post<{message: string}>('http://localhost:3000/highscore', scoreData, httpOptions);
-  } */
+    return this.http.get<{message: string}>('http://localhost:3000/getuserhighscore', scoreData, httpOptions);
+  }  */
 
 }
