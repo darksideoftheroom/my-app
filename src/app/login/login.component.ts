@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   itsrequired = new FormControl('', [Validators.required]);
  
- 
+  /* form validating */
    getErrorMessage() {
      if (this.email.hasError('required')) {
        return 'You must enter a value';
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
   repositoryService: RepositoryService;
-  router:Router;
+  router: Router;
 
   constructor(repositoryService: RepositoryService, router: Router, private cookieService: CookieService ) {
     this.repositoryService = repositoryService;
@@ -38,14 +38,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
-  login(username: string, password: string):void {
+  /* error checking */
+  login(username: string, password: string): void {
     if(password === ''){
       alert("Password can not be empty");
     }
     else if(username === ''){
       alert("Username can not be empty");
-    }else{
+    }else{ //communicate with server, depending on response, print result
       this.repositoryService.login(username, password).subscribe((responseData) => {
         console.log(responseData);
         if(responseData.message === "Login failed"){
@@ -53,9 +53,9 @@ export class LoginComponent implements OnInit {
         }
         else if(responseData.message === "Successful login"){
           alert("Erfolg!");
-          this.cookieService.set('user', username);
+          this.cookieService.set('user', username); //sets cookie for user
           window.location.href = "http://localhost:4200/puzzle";
-          //this.router.navigate(['/puzzle']);
+          //this.router.navigate(['/puzzle']); didn't work
         }
       });
     }

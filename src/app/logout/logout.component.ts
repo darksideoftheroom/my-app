@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LogoutComponent implements OnInit {
 
   constructor(private cookieService: CookieService) { }
-
+  //logout component just deletes the cookie and redirects to the login page, maybe could've been solved with less code
   ngOnInit(): void {
     this.cookieService.delete('user');
     this.reload();

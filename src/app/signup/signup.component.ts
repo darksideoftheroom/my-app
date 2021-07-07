@@ -12,7 +12,7 @@ import { RepositoryService } from '../repository.service';
 
 
 export class SignupComponent implements OnInit {
-
+//save credentials into local variables
  email = new FormControl('', [Validators.required, Validators.email]);
  itsrequired = new FormControl('', [Validators.required]);
  itsrequiredTwo = new FormControl('', [Validators.required]);
@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+//error checking
   signup(username: string, password: string, password2: string, company: string, street: string, pcode: number):void {
     if(password === ''){
       alert("Password can not be empty");

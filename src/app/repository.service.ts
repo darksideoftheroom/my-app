@@ -45,11 +45,11 @@ export class RepositoryService {
   }
 
 
-/*   loadUserHighscore(username: string) {
+  loadUserHighscore(username: string) {
     const scoreData = {
       username: username
     };
-    return this.http.get<{message: string}>('http://localhost:3000/getuserhighscore', scoreData, httpOptions);
-  }  */
+    return this.http.post<{message: string}>('http://localhost:3000/getuserhighscore', scoreData, httpOptions);
+  } 
 
 }

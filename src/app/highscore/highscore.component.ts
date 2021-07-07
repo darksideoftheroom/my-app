@@ -15,7 +15,7 @@ export class HighscoreComponent implements OnInit {
     this.repositoryService = repositoryService;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { /* saves received server data in highscoreData object */
     this.repositoryService.loadHighscore().subscribe((responseData) => {
       console.log(responseData);
       this.highscoreData = responseData.message;

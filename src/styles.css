@@ -2,7 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-body {
+body { /* background animation */
     background: linear-gradient(-45deg, #ee7752, #df7ea3, #23a6d5, #238ed5);
     background-size: 400% 400%;
     animation: gradient 60s ease infinite;

@@ -1,7 +1,7 @@
 <h1>Scoreboard</h1>
 <div class="wrapper">
 <div class="scoreboard">
-    <ol>
+    <ol> <!-- printing a ordered list of all the highscores -->
     <li *ngFor = "let data of this.highscoreData">{{data.username}}: {{data.points}}</li>
 </ol>
 </div>

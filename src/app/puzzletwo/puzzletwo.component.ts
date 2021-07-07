@@ -1,3 +1,5 @@
+/* basically same as puzzle one */
+
 import { TimerComponent } from '../timer/timer.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 

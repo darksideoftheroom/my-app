@@ -105,7 +105,7 @@ db.find({}, function(err,docs){
     let loggedIn = false;
     docs.forEach(doc => {
         if(loginData.username == doc.username && loginData.password == doc.password){
-             //Um einen Token zu generieren
+             //generating a random token for the user
             var token = randomToken();
             console.log(token);
             const tokenData = {
@@ -117,7 +117,7 @@ db.find({}, function(err,docs){
 
             });
 
-            //Schicke den Token an den Client
+            //sends the token to the client
             res.status(200).json({
                 message: 'Successful login'
             });

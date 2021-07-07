@@ -12,5 +12,5 @@ export class FaqComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  panelOpenState = false;
+  panelOpenState = false; /* makes sure, that all the accordion panels are closed at the start, for a cleaner look */
 }
