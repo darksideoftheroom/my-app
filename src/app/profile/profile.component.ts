@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ProfileComponent implements OnInit {
   repositoryService: RepositoryService;
+  highscoreData;
   username;
 
   constructor(repositoryService: RepositoryService, private cookieService: CookieService ) {
@@ -17,6 +18,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.cookieService.get('user');
+    /* this.repositoryService.loadUserHighscore(this.username).subscribe((responseData) => {
+      console.log(responseData);
+      this.highscoreData = responseData.message;
+    }); */
   }
 
 }

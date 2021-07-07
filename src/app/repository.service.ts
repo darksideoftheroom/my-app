@@ -44,4 +44,12 @@ export class RepositoryService {
     return this.http.get<{message: string}>('http://localhost:3000/gethighscore', httpOptions);
   }
 
+
+/*   loadUserHighscore(username: string) {
+    const scoreData = {
+      username: username
+    };
+    return this.http.post<{message: string}>('http://localhost:3000/highscore', scoreData, httpOptions);
+  } */
+
 }

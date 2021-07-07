@@ -87,6 +87,19 @@ db.find({type: 'highscoreList'}).sort({points: -1}).limit(10).exec(function (err
  });
 
 });
+/* app.get('/getuserhighscore', function(req, res){
+    const userData = req.body;
+    console.log(userData.username);
+db.find({}, function(err,docs){
+    docs.forEach(doc => {
+        if(userData.username == doc.username){
+            res.status(200).json({
+                message: doc
+              }); 
+        }    
+        });
+    });
+}); */
 
 app.post('/logout', function(req, res){
 docs.forEach(doc => {
