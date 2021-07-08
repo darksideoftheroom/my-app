@@ -1,5 +1,3 @@
-/* basically same as puzzle one */
-
 import { TimerComponent } from '../timer/timer.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
@@ -24,18 +22,18 @@ export class PuzzletwoComponent implements OnInit {
 
     //setTimeout(() => this.solved = true, 5000);
 
-    this.riddle.id = "riddletwo";
-    document.getElementById("puzzleContainertwo").appendChild(this.riddle);
+    this.riddle.id = "riddle";
+    document.getElementById("puzzleContainer").appendChild(this.riddle);
 
     //shuffle the parts
-    const puzzlePartsIdxtwo = this.shufflePuzzlePartstwo();
+    const puzzlePartsIdx = this.shufflePuzzleParts();
 
     //add pictures for random puzzle
-    for (let i = 0; i < puzzlePartsIdxtwo.length; i++) {
+    for (let i = 0; i < puzzlePartsIdx.length; i++) {
       const img = document.createElement("img");
-      const imgId = "part" + puzzlePartsIdxtwo[i];
+      const imgId = "part" + puzzlePartsIdx[i];
 
-      img.setAttribute("src", "assets/puzzletwo/img" + puzzlePartsIdxtwo[i] + ".jpg");
+      img.setAttribute("src", "assets/puzzletwo/img" + puzzlePartsIdx[i] + ".jpg");
       img.setAttribute("alt", imgId);
       img.setAttribute("id", imgId);
 
@@ -43,10 +41,10 @@ export class PuzzletwoComponent implements OnInit {
         const currentImgId = img.getAttribute("id")!;
         const imgElement = document.getElementById(currentImgId)!;
 
-        if (!this.isSolvedtwo()) {
-          if (this.isSelectabletwo()) {
+        if (!this.isSolved()) {
+          if (this.isSelectable()) {
 
-            const firstSelectedPuzzlePartId = this.getAlreadySelectedPicIdtwo();
+            const firstSelectedPuzzlePartId = this.getAlreadySelectedPicId();
 
             //set opacity for clicked element
             imgElement.style.opacity = "1.0";
@@ -55,11 +53,11 @@ export class PuzzletwoComponent implements OnInit {
             }
 
             //swap parts, when more than 1 part is selected
-            if (this.countSelectedtwo() > 1) {
-              if (this.areNeighbourstwo(firstSelectedPuzzlePartId, currentImgId)) {
-                this.swapPartstwo();
+            if (this.countSelected() > 1) {
+              if (this.areNeighbours(firstSelectedPuzzlePartId, currentImgId)) {
+                this.swapParts();
               }
-              this.resetOpacitytwo();
+              this.resetOpacity();
             }
           }
         }
@@ -69,16 +67,16 @@ export class PuzzletwoComponent implements OnInit {
     }
   }
 
-  passedSecondtwo(secs: number):void {
+  passedSecond(secs: number):void {
     console.log(secs);
   }
 
-  isSelectabletwo(): boolean {
-    return this.countSelectedtwo() <= 1;
+  isSelectable(): boolean {
+    return this.countSelected() <= 1;
   }
 
 
-  countSelectedtwo(): number {
+  countSelected(): number {
     const pics = this.riddle.getElementsByTagName("img");
     let counter = 0;
 
@@ -92,7 +90,7 @@ export class PuzzletwoComponent implements OnInit {
     return counter;
   }
 
-  getAlreadySelectedPicIdtwo(): string {
+  getAlreadySelectedPicId(): string {
     const pics = this.riddle.getElementsByTagName("img");
     let counter = 0;
 
@@ -106,7 +104,7 @@ export class PuzzletwoComponent implements OnInit {
     return "";
   }
 
-  isSolvedtwo(): boolean {
+  isSolved(): boolean {
     const pics = this.riddle.getElementsByTagName("img");
 
     //check if the parts are sorted
@@ -123,7 +121,7 @@ export class PuzzletwoComponent implements OnInit {
     return true;
   }
 
-  shufflePuzzlePartstwo(): number[] {
+  shufflePuzzleParts(): number[] {
     const puzzleParts = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let counter = puzzleParts.length;
     while (counter > 0) {
@@ -136,12 +134,12 @@ export class PuzzletwoComponent implements OnInit {
     return puzzleParts;
   }
 
-  areNeighbourstwo(firstPicId: string, secondPicId: string): boolean {
+  areNeighbours(firstPicId: string, secondPicId: string): boolean {
     const pics = this.riddle.getElementsByTagName("img");
 
     for (let i = 0; i < pics.length; i++) {
       if (pics[i].getAttribute("id") == firstPicId) {
-        const neighbourIdxs = this.getNeighbourIdxstwo(i);
+        const neighbourIdxs = this.getNeighbourIdxs(i);
         for (let j = 0; j < neighbourIdxs.length; j++) {
           if (pics[neighbourIdxs[j]].getAttribute("id") == secondPicId) {
             return true;
@@ -152,7 +150,7 @@ export class PuzzletwoComponent implements OnInit {
     return false;
   }
 
-  swapPartstwo(): void {
+  swapParts(): void {
     const pics = this.riddle.getElementsByTagName("img");
     let pic1 = null;
 
@@ -183,7 +181,7 @@ export class PuzzletwoComponent implements OnInit {
         pic2.setAttribute("alt", pic1Alt);
         pic2.setAttribute("id", pic1Id);
 
-        if (this.isSolvedtwo()) {
+        if (this.isSolved()) {
           let solved = document.createElement("div");
           solved.id = "solved";
 
@@ -197,7 +195,7 @@ export class PuzzletwoComponent implements OnInit {
     }
   }
 
-  resetOpacitytwo(): void {
+  resetOpacity(): void {
     const pics = this.riddle.getElementsByTagName("img");
 
     for (let i = 0; i < pics.length; i++) {
@@ -207,36 +205,36 @@ export class PuzzletwoComponent implements OnInit {
     }
   }
 
-  getNeighbourIdxstwo(currentIdx: number): number[] {
+  getNeighbourIdxs(currentIdx: number): number[] {
     const returnIdxs: number[] = [];
 
     // upperNeighbourIdx
-    if (this.isNeighbourIndexColtwo(currentIdx - 3)) {
+    if (this.isNeighbourIndexCol(currentIdx - 3)) {
       returnIdxs.push(currentIdx - 3);
     }
     // rightNeighbourIdx
-    if (this.isNeighbourIndexRowtwo(currentIdx, currentIdx + 1)) {
+    if (this.isNeighbourIndexRow(currentIdx, currentIdx + 1)) {
       returnIdxs.push(currentIdx + 1);
     }
     // lowerNeighbourIdx
-    if (this.isNeighbourIndexColtwo(currentIdx + 3)) {
+    if (this.isNeighbourIndexCol(currentIdx + 3)) {
       returnIdxs.push(currentIdx + 3);
     }
     // leftNeighbourIdx
-    if (this.isNeighbourIndexRowtwo(currentIdx, currentIdx - 1)) {
+    if (this.isNeighbourIndexRow(currentIdx, currentIdx - 1)) {
       returnIdxs.push(currentIdx - 1);
     }
 
     return returnIdxs;
   }
 
-  isNeighbourIndexRowtwo(currentIdx: number, checkIdx: number): boolean {
+  isNeighbourIndexRow(currentIdx: number, checkIdx: number): boolean {
     return (Math.max(-1, checkIdx) > -1) &&
       (Math.min(9, checkIdx) < 9) &&
       (Math.floor(currentIdx / 3) == Math.floor(checkIdx / 3));
   }
 
-  isNeighbourIndexColtwo(checkIdx: number): boolean {
+  isNeighbourIndexCol(checkIdx: number): boolean {
     return (Math.max(-1, checkIdx) > -1) &&
       (Math.min(9, checkIdx) < 9);
   }

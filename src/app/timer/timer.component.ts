@@ -40,10 +40,10 @@ export class TimerComponent implements OnInit {
 		  // Aktualisieren der Sekunden auf der Seite
   
 		  document.getElementById('zeitlabel').innerText = this.secs + '';
-		  // Zeit soll wieder eine Sekunde weiterlaufen
+		  // Zeit soll wieder eine Sekunde weiterzählen
       setTimeout(() => this.timer(), 1000);
 	}
-	// Es wurden alle Paare gefunden
+	// user bekommt ein alert mit seinem score 
 	else{
     this.calcScore();  
 	}
